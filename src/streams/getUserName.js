@@ -15,6 +15,7 @@ import { getHostMachine } from '../eol/getHostMachine.js';
 import { getHomeDir } from '../eol/getHomeDir.js';
 import { getHostName } from '../eol/getHostName.js';
 import { getCPUArchitecture } from '../eol/getCpuArchitecture.js';
+import { calculateHash } from '../hash/calcHash.js';
 
 const readline = rl.createInterface({
     input: process.stdin,
@@ -72,6 +73,8 @@ export const getUserName = () => {
       } else if (args[1] === '--architecture') {
         getCPUArchitecture();
       }
+    } else if (args[0] === 'hash') {
+      calculateHash(args[1]);
     }
   })
   
