@@ -4,6 +4,12 @@ import { fileURLToPath } from 'url';
 import { upperFromCurrentDirectory } from '../nwd/upperFromCurrentDirectory.js';
 import { pathToDirectory } from '../nwd/pathToDirectory.js';
 import { getListAllFilesAndFolder } from '../nwd/listAllFilesAndFolder.js';
+import { readFile } from '../files/readFile.js';
+import { createFile } from '../files/createFile.js';
+import { renameFile } from '../files/renameFile.js';
+import { copyFile } from '../files/copyFile.js';
+import { moveFile } from '../files/moveFile.js';
+import { deleteFile } from '../files/deleteFile.js';
 
 const readline = rl.createInterface({
     input: process.stdin,
@@ -37,6 +43,18 @@ export const getUserName = () => {
       pathToDirectory(process.cwd(), args[1]);
     } else if (args[0] === 'ls') {
       getListAllFilesAndFolder();
+    } else if (args[0] === 'cat') {
+      readFile(args[1]);
+    } else if (args[0] === 'add') {
+      createFile(args[1]);
+    } else if (args[0] === 'rn') {
+      renameFile(args[1], args[2]);
+    } else if (args[0] === 'cp') {
+      copyFile(args[1], args[2]);
+    } else if (args[0] === 'mv') {
+      moveFile(args[1], args[2]);
+    } else if (args[0] === 'rm') {
+      deleteFile(args[1]);
     }
   })
   
