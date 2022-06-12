@@ -10,6 +10,11 @@ import { renameFile } from '../files/renameFile.js';
 import { copyFile } from '../files/copyFile.js';
 import { moveFile } from '../files/moveFile.js';
 import { deleteFile } from '../files/deleteFile.js';
+import { getEOL } from '../eol/getEol.js';
+import { getHostMachine } from '../eol/getHostMachine.js';
+import { getHomeDir } from '../eol/getHomeDir.js';
+import { getHostName } from '../eol/getHostName.js';
+import { getCPUArchitecture } from '../eol/getCpuArchitecture.js';
 
 const readline = rl.createInterface({
     input: process.stdin,
@@ -55,6 +60,18 @@ export const getUserName = () => {
       moveFile(args[1], args[2]);
     } else if (args[0] === 'rm') {
       deleteFile(args[1]);
+    } else if (args[0] === 'os') {
+      if(args[1] === '--EOL') {
+        getEOL()
+      } else if (args[1] === '--cpus') {
+        getHostMachine();
+      } else if (args[1] === '--homedir') {
+        getHomeDir();
+      } else if (args[1] === '--username') {
+        getHostName();
+      } else if (args[1] === '--architecture') {
+        getCPUArchitecture();
+      }
     }
   })
   
