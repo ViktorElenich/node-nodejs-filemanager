@@ -4,7 +4,8 @@
   "description": "This repository https://github.com/ViktorElenich/node-nodejs-filemanager.git",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

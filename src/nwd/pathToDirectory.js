@@ -1,11 +1,19 @@
-import * as fs from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export const pathToDirectory = (pathName, dir) => {
-  fs.existsSync(path.join(pathName, '/', dir));
-  console.log(process.cwd());
+export const pathToDirectory = (dir) => {
+  if (path.isAbsolute(dir)) {
+    try {
+      process.chdir(dir);
+      console.log(process.cwd());
+    } catch (error) {
+      console.log(error);
+    }
+  } else {
+    try {
+      let inputPath = path.join(process.cwd(), dir);
+      pathToDirectory(inputPath);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

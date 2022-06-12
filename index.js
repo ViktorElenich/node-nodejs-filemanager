@@ -1,23 +1,23 @@
 import rl from 'readline';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { upperFromCurrentDirectory } from '../nwd/upperFromCurrentDirectory.js';
-import { pathToDirectory } from '../nwd/pathToDirectory.js';
-import { getListAllFilesAndFolder } from '../nwd/listAllFilesAndFolder.js';
-import { readFile } from '../files/readFile.js';
-import { createFile } from '../files/createFile.js';
-import { renameFile } from '../files/renameFile.js';
-import { copyFile } from '../files/copyFile.js';
-import { moveFile } from '../files/moveFile.js';
-import { deleteFile } from '../files/deleteFile.js';
-import { getEOL } from '../eol/getEol.js';
-import { getHostMachine } from '../eol/getHostMachine.js';
-import { getHomeDir } from '../eol/getHomeDir.js';
-import { getHostName } from '../eol/getHostName.js';
-import { getCPUArchitecture } from '../eol/getCpuArchitecture.js';
-import { calculateHash } from '../hash/calcHash.js';
-import { compressFile } from '../zip/compress.js';
-import { decompressFile } from '../zip/decompress.js';
+import { upperFromCurrentDirectory } from './src/nwd/upperFromCurrentDirectory.js';
+import { pathToDirectory } from './src/nwd/pathToDirectory.js';
+import { getListAllFilesAndFolder } from './src/nwd/listAllFilesAndFolder.js';
+import { readFile } from './src/files/readFile.js';
+import { createFile } from './src/files/createFile.js';
+import { renameFile } from './src/files/renameFile.js';
+import { copyFile } from './src/files/copyFile.js';
+import { moveFile } from './src/files/moveFile.js';
+import { deleteFile } from './src/files/deleteFile.js';
+import { getEOL } from './src/eol/getEol.js';
+import { getHostMachine } from './src/eol/getHostMachine.js';
+import { getHomeDir } from './src/eol/getHomeDir.js';
+import { getHostName } from './src/eol/getHostName.js';
+import { getCPUArchitecture } from './src/eol/getCpuArchitecture.js';
+import { calculateHash } from './src/hash/calcHash.js';
+import { compressFile } from './src/zip/compress.js';
+import { decompressFile } from './src/zip/decompress.js';
 
 const readline = rl.createInterface({
     input: process.stdin,
@@ -48,7 +48,7 @@ export const getUserName = () => {
     } else if (args[0] === 'up') {
       upperFromCurrentDirectory();
     } else if (args[0] === 'cd') {
-      pathToDirectory(process.cwd(), args[1]);
+      pathToDirectory(args[1]);
     } else if (args[0] === 'ls') {
       getListAllFilesAndFolder();
     } else if (args[0] === 'cat') {
