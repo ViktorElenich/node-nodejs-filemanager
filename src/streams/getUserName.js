@@ -2,6 +2,8 @@ import rl from 'readline';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { upperFromCurrentDirectory } from '../nwd/upperFromCurrentDirectory.js';
+import { pathToDirectory } from '../nwd/pathToDirectory.js';
+import { getListAllFilesAndFolder } from '../nwd/listAllFilesAndFolder.js';
 
 const readline = rl.createInterface({
     input: process.stdin,
@@ -26,12 +28,15 @@ export const getUserName = () => {
   console.log(`You are currently in ${__dirname}`);
 
   readline.on('line', (input) => {
-    if(input === '.exit'){
+    const args = input.split(' ');
+    if(args[0] === '.exit'){
       readline.close()
-    } else if (input === 'up') {
+    } else if (args[0] === 'up') {
       upperFromCurrentDirectory();
-    } else if (input === 'cd') {
-      console.log('you enter ' + input);
+    } else if (args[0] === 'cd') {
+      pathToDirectory(process.cwd(), args[1]);
+    } else if (args[0] === 'ls') {
+      getListAllFilesAndFolder();
     }
   })
   

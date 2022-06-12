@@ -1,6 +1,6 @@
 export const upperFromCurrentDirectory  = () => {
   try {
-    process.chdir('../');
+    process.chdir('./');
     console.log(process.cwd());
   }
   catch (err) {
