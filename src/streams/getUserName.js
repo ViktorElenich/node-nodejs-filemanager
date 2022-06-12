@@ -16,6 +16,8 @@ import { getHomeDir } from '../eol/getHomeDir.js';
 import { getHostName } from '../eol/getHostName.js';
 import { getCPUArchitecture } from '../eol/getCpuArchitecture.js';
 import { calculateHash } from '../hash/calcHash.js';
+import { compressFile } from '../zip/compress.js';
+import { decompressFile } from '../zip/decompress.js';
 
 const readline = rl.createInterface({
     input: process.stdin,
@@ -75,6 +77,10 @@ export const getUserName = () => {
       }
     } else if (args[0] === 'hash') {
       calculateHash(args[1]);
+    } else if (args[0] === 'compress') {
+      compressFile(args[1], args[2]);
+    } else if (args[0] === 'decompress') {
+      decompressFile(args[1], args[2]);
     }
   })
   
